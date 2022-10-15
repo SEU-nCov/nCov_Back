@@ -9,7 +9,17 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserMapper userMapper;
-    public User loginbyphone(User user) {
-        return userMapper.loginbyphone(user);
+    public User login(User user) {
+        return userMapper.login(user);
+    }
+
+    public Integer register(User user) {
+        int res=0;
+        try {
+            res=userMapper.register(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return res;
     }
 }

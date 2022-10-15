@@ -14,18 +14,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping("/loginbyphone")
-    public R loginbyphone(@RequestBody User user){
-        User loginuser=userService.loginbyphone(user);
+    @PostMapping("/userLogin")
+    public R login(@RequestBody User user){
+        User loginuser=userService.login(user);
         R r=new R();
         if(loginuser!=null){
             r.setCode(200);
-            r.setMsg("loginphonesuccess");
+            r.setMsg("LoginSuccess");
             r.setData(loginuser);
         }
         else {
             r.setCode(201);
-            r.setMsg("loginerror");
+            r.setMsg("LoginError");
+        }
+        return r;
+    }
+    @PostMapping("/userRegister")
+    public R register(@RequestBody User user){
+        int res=userService.register(user);
+        R r=new R();
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("registersuccess");
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("registererror");
         }
         return r;
     }
