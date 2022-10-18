@@ -56,6 +56,16 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.80</version>
         </dependency>
+        <dependency>
+            <groupId>com.huaweicloud.sdk</groupId>
+            <artifactId>huaweicloud-sdk-iam</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huaweicloud.sdk</groupId>
+            <artifactId>huaweicloud-sdk-smn</artifactId>
+            <version>3.1.5</version>
+        </dependency>
     </dependencies>
 
     <build>

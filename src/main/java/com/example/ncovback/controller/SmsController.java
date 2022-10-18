@@ -25,8 +25,10 @@ import java.util.List;
 @RestController
 public class SmsController {
     private static final String SERVER_URL="https://api.netease.im/sms/sendcode.action";
-    private static final String APP_KEY="39a9e0d85b19883cdf09ecda1abe8bb9";//网易云信分配的账号
-    private static final String APP_SECRET="d40dc8ce5fd8";//网易云信分配的密钥
+    //private static final String APP_KEY="39a9e0d85b19883cdf09ecda1abe8bb9";//网易云信分配的账号 48bdec2766d07fd9194ff46dcad6a4e6
+    private static final String APP_KEY="48bdec2766d07fd9194ff46dcad6a4e6";
+    //private static final String APP_SECRET="d40dc8ce5fd8";//网易云信分配的密钥 a920c9787a82
+    private static final String APP_SECRET="a920c9787a82";
     private static final String MOULD_ID="19500664";//模板ID
     private static final String NONCE="123456";//随机数
     private static final String CODELEN = "6";
