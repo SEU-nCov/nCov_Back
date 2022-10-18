@@ -90,7 +90,6 @@ public class SmsController {
 
         HttpResponse response = httpClient.execute(httpPost);
         String result= EntityUtils.toString(response.getEntity(), "utf-8");
-        System.out.println(result);
         JSONObject jsonResult = JSONObject.parseObject(result);
         r.setCode(Integer.valueOf(jsonResult.getString("code")));
         r.setMsg(jsonResult.getString("msg"));

@@ -31,15 +31,20 @@ public class UserController {
     }
     @PostMapping("/userRegister")
     public R register(@RequestBody User user){
-        int res=userService.register(user);
+        int res=userService.ifExist(user);
         R r=new R();
         if(res!=0){
-            r.setCode(200);
-            r.setMsg("registersuccess");
-        }
-        else {
             r.setCode(201);
-            r.setMsg("registererror");
+            r.setMsg("已存在该账号");
+        }else {
+            res = userService.register(user);
+            if (res != 0) {
+                r.setCode(200);
+                r.setMsg("注册成功");
+            } else {
+                r.setCode(202);
+                r.setMsg("注册失败");
+            }
         }
         return r;
     }

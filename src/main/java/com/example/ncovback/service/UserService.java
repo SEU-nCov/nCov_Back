@@ -22,4 +22,8 @@ public class UserService {
         }
         return res;
     }
+
+    public Integer ifExist(User user){
+        return userMapper.ifExist(user);
+    }
 }
