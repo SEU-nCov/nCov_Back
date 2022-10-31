@@ -10,4 +10,5 @@ public class User {
     private String user_name;
     private String user_identify;
     private Integer code_color;
+    private Integer sign_timeleft;
 }

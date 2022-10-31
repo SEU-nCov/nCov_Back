@@ -12,12 +12,6 @@ import com.huaweicloud.sdk.core.exception.ServiceResponseException;
 import com.huaweicloud.sdk.iam.v3.IamClient;
 import com.huaweicloud.sdk.iam.v3.model.*;
 import com.huaweicloud.sdk.iam.v3.region.IamRegion;
-import com.huaweicloud.sdk.smn.v2.SmnClient;
-import com.huaweicloud.sdk.smn.v2.model.*;
-import com.huaweicloud.sdk.smn.v2.region.SmnRegion;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,10 +70,14 @@ public class HWSMSController {
             e.printStackTrace();
         }
     }
-
     @PostMapping("/getSMN")
-    public String getSMN(@RequestBody Sms sms) {
-        return hwsmsService.getSMN(sms);
+    public R getSMN(@RequestBody Sms sms) {
+        String code= hwsmsService.getSMN(sms);
+        R r=new R();
+        r.setCode(200);
+        r.setMsg("LoginSuccess");
+        r.setData(code);
+        return r;
     }
 
 }

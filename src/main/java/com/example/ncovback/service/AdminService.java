@@ -4,6 +4,7 @@ import com.example.ncovback.common.R;
 import com.example.ncovback.entity.Admin;
 import com.example.ncovback.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
