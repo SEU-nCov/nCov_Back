@@ -9,6 +9,6 @@ public class User {
     private String password;
     private String user_name;
     private String user_identify;
-    private Integer code_color;
+    private Integer user_signcolor;
     private Integer sign_timeleft;
 }
