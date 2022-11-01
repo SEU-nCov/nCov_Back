@@ -75,7 +75,7 @@ public class HWSMSController {
         String code= hwsmsService.getSMN(sms);
         R r=new R();
         r.setCode(200);
-        r.setMsg("LoginSuccess");
+        r.setMsg("getCodeSuccess");
         r.setData(code);
         return r;
     }

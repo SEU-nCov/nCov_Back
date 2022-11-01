@@ -1,9 +1,12 @@
 package com.example.ncovback.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.ncovback.entity.User;
 import com.example.ncovback.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -25,5 +28,20 @@ public class UserService {
 
     public Integer ifExist(User user){
         return userMapper.ifExist(user);
+    }
+
+    public Integer changePassword(User user) {
+        return userMapper.changePassword(user);
+    }
+
+    public List<User> getRelativebyid(User user) {
+        return userMapper.getRelativebyid(user);
+    }
+
+    public Integer addRelativebyid(User user) {
+        int user_id=user.getUser_id();
+        userMapper.addRelativebyid(user);
+        int relative_id=user.getUser_id();
+        return userMapper.addRelation(user_id,relative_id);
     }
 }

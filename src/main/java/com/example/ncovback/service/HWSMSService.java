@@ -62,6 +62,9 @@ public class HWSMSService {
                 e.printStackTrace();
             }
         }
+        else {
+            System.out.println("exist");
+        }
         topicUrn = hwsmsMapper.getTopicurn(sms);
         ListSubscriptionsByTopicRequest request_check = new ListSubscriptionsByTopicRequest();
         request_check.withTopicUrn(topicUrn);

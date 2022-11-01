@@ -10,4 +10,18 @@
     <select id="ifExist" parameterType="com.example.ncovback.entity.User" resultType="java.lang.Integer">
         select count(*) from tb_user where phone=#{phone};
     </select>
+    <update id="changePassword" parameterType="com.example.ncovback.entity.User" >
+        update tb_user set password=#{password} where phone=#{phone}
+    </update>
+    <select id="getRelativebyid" parameterType="com.example.ncovback.entity.User" resultType="com.example.ncovback.entity.User">
+        select * from tb_user where user_id in (select relative_id from tb_relatives where user_id=#{user_id})
+    </select>
+    <insert id="addRelativebyid" useGeneratedKeys="true" keyProperty="user_id">
+        insert into tb_user (user_name,user_identify,phone)
+        values (#{user_name},#{user_identify},#{phone}) ;
+    </insert>
+    <insert id="addRelation" parameterType="java.lang.Integer">
+        insert into tb_relatives (user_id,relative_id)
+        values (#{user_id},#{relative_id});
+    </insert>
 </mapper>
