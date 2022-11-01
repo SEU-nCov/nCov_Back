@@ -4,7 +4,7 @@
     <select id="getNatResultbyid" parameterType="com.example.ncovback.entity.User" resultType="com.example.ncovback.entity.NatResult">
         select tb_natres.*,tb_natpoint.nat_pointname,tb_user.user_name
         from tb_natres ,tb_natpoint ,tb_user  where tb_user.user_id in (select user_id from tb_natres
-                                                                        where tb_natres.nat_pointid in (select tb_natres.nat_pointid from tb_natres where tb_natres.user_id=1)) and tb_natres.nat_result is not null
+                                                                        where tb_natres.nat_pointid in (select tb_natres.nat_pointid from tb_natres where tb_natres.user_id=#{user_id})) and tb_natres.nat_result is not null
         order by tb_natres.nat_time desc
     </select>
 </mapper>
