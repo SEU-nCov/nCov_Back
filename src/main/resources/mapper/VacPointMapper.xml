@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncovback.mapper.VacPointMapper">
+    <select id="getVacPointbycity" parameterType="com.example.ncovback.entity.VacPoint" resultType="com.example.ncovback.entity.VacPoint">
+        select * from tb_vacpoint where city_code in (select city_code from tb_city where city_name like #{city_name})
+    </select>
+</mapper>

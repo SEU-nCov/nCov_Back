@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncovback.mapper.TravelPolicyMapper">
+    <select id="getTravelPolicy" parameterType="com.example.ncovback.entity.TravelPolicy" resultType="com.example.ncovback.entity.TravelPolicy">
+        select L.from_policy ,C.to_policy
+        from (select leave_policy as from_policy
+              from tb_citypolicy where city_code in (select city_code from tb_city where city_name like #{from_city} )) as L,
+             (select come_policy as to_policy
+              from tb_citypolicy where city_code in (select city_code from tb_city where city_name like #{to_city} )) as C;
+    </select>
+</mapper>
