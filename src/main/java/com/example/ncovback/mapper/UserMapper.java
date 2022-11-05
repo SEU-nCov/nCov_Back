@@ -1,10 +1,8 @@
 package com.example.ncovback.mapper;
 
 import com.example.ncovback.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,4 +21,12 @@ public interface UserMapper {
     Integer addRelativebyid(User user);
 
     Integer addRelation(Integer user_id,Integer relative_id);
+
+    Integer uploadPicture(User user);
+
+    Integer changeUserPhone(User user);
+
+    Integer deleteRelation(Integer user_id, Integer relative_id);
+
+    Integer deleteRelAccount(Integer relative_id);
 }

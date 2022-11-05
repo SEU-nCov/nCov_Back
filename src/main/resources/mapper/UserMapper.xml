@@ -24,4 +24,20 @@
         insert into tb_relatives (user_id,relative_id)
         values (#{user_id},#{relative_id});
     </insert>
+    <update id="uploadPicture" parameterType="com.example.ncovback.entity.User">
+        update tb_user set picture_url=#{picture_url} where user_id=#{user_id}
+    </update>
+    <update id="changeUserPhone" parameterType="com.example.ncovback.entity.User">
+        update tb_user set phone=#{phone} where user_id=#{user_id} and password is not null
+    </update>
+    <delete id="deleteRelation" parameterType="java.lang.Integer">
+        delete
+        from tb_relatives
+        where user_id=#{user_id} and relative_id=#{relative_id};
+    </delete>
+    <delete id="deleteRelAccount" parameterType="java.lang.Integer">
+        delete
+        from tb_user
+        where user_id=#{relative_id};
+    </delete>
 </mapper>

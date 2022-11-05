@@ -11,4 +11,5 @@ public class User {
     private String user_identify;
     private Integer user_signcolor;
     private Integer sign_timeleft;
+    private String picture_url;
 }

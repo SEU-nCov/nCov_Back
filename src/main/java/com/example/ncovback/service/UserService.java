@@ -44,4 +44,18 @@ public class UserService {
         int relative_id=user.getUser_id();
         return userMapper.addRelation(user_id,relative_id);
     }
+    public Integer uploadPicture(User user) {
+        return userMapper.uploadPicture(user);
+    }
+
+    public Integer changeUserPhone(User user) {
+        return userMapper.changeUserPhone(user);
+    }
+
+
+    public Integer deleteRelativebyid(Integer user_id, Integer relative_id) {
+        int res1=userMapper.deleteRelation(user_id,relative_id);
+        int res2=userMapper.deleteRelAccount(relative_id);
+        return res1;
+    }
 }

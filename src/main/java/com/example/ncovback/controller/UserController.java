@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -87,6 +88,49 @@ public class UserController {
         }else{
             r.setCode(201);
             r.setMsg("添加失败");
+        }
+        return r;
+    }
+    @PostMapping("/uploadPicture")
+    public R uploadPicture(@RequestBody User user){
+        int res=userService.uploadPicture(user);
+        R r=new R();
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("success");
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
+    @PostMapping("/changeUserPhone")
+    public R changeUserPhone(@RequestBody User user){
+        int res=userService.changeUserPhone(user);
+        R r=new R();
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("success");
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
+    @PostMapping("/deleteRelative")
+    public R deleteRelativebyid(@RequestBody Map<String,Integer> data){
+        R r=new R();
+        Integer user_id=data.get("user_id");
+        Integer relative_id=data.get("relative_id");
+        int res=userService.deleteRelativebyid(user_id,relative_id);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("删除成功");
+        }else{
+            r.setCode(201);
+            r.setMsg("删除失败");
         }
         return r;
     }
