@@ -29,4 +29,8 @@ public interface UserMapper {
     Integer deleteRelation(Integer user_id, Integer relative_id);
 
     Integer deleteRelAccount(Integer relative_id);
+
+    Integer declareHealthCode(User user);
+
+    String getTownid(User user);
 }

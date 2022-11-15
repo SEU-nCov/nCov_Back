@@ -40,4 +40,12 @@
         from tb_user
         where user_id=#{relative_id};
     </delete>
+    <update id="declareHealthCode" parameterType="com.example.ncovback.entity.User">
+        update tb_user
+        set sign_timeleft = NOW(),town_id=#{town_id},detail_location=#{detail_location}
+        where user_id=#{user_id};
+    </update>
+    <select id="getTownid" parameterType="com.example.ncovback.entity.User" resultType="java.lang.String">
+        select distinct concat(area_code,town) as town_id from tb_town where town_name=#{town_name};
+    </select>
 </mapper>

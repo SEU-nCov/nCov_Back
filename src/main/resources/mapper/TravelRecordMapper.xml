@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncovback.mapper.TravelRecordMapper">
+    <insert id="addTravelRecord" parameterType="com.example.ncovback.entity.TravelRecord">
+        insert into tb_travel (user_id,area_code,street_id,t_time)
+        values (#{user_id},#{area_code},#{street_id},NOW());
+    </insert>
+    <select id="getTravelRecordbyuid" parameterType="com.example.ncovback.entity.TravelRecord" resultType="java.lang.String">
+        select distinct CONCAT(province_name,city_name) as PAC,province_code, city_code from tb_province,tb_city where city_code in
+        (select CONCAT(left(area_code,4),'00') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW()) &lt; 168 )
+        and province_code=(select CONCAT(left(city_code,3),'000'))
+    </select>
+</mapper>

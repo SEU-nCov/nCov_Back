@@ -58,4 +58,12 @@ public class UserService {
         int res2=userMapper.deleteRelAccount(relative_id);
         return res1;
     }
+
+    public Integer declareHealthCode(User user) {
+        return userMapper.declareHealthCode(user);
+    }
+
+    public String getTownid(User user) {
+        return userMapper.getTownid(user);
+    }
 }

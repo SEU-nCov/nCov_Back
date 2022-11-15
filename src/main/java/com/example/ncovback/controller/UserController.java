@@ -134,4 +134,21 @@ public class UserController {
         }
         return r;
     }
+    @PostMapping("/declareHealthCode")
+    public R declareHealthCode(@RequestBody User user){
+        R r=new R();
+        String town_id=userService.getTownid(user);
+        user.setTown_id(town_id);
+        System.out.println(town_id);
+        Integer res=userService.declareHealthCode(user);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("更新或申报成功");
+            r.setData(res);
+        }else {
+            r.setCode(201);
+            r.setMsg("Error");
+        }
+        return r;
+    }
 }

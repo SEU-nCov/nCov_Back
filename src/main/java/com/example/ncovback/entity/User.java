@@ -2,6 +2,8 @@ package com.example.ncovback.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class User {
     private Integer user_id;
@@ -10,6 +12,9 @@ public class User {
     private String user_name;
     private String user_identify;
     private Integer user_signcolor;
-    private Integer sign_timeleft;
+    private Date sign_timeleft;
     private String picture_url;
+    private String town_id;
+    private String town_name;
+    private String detail_location;
 }
