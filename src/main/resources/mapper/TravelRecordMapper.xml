@@ -6,8 +6,9 @@
         values (#{user_id},#{area_code},#{street_id},NOW());
     </insert>
     <select id="getTravelRecordbyuid" parameterType="com.example.ncovback.entity.TravelRecord" resultType="java.lang.String">
-        select distinct CONCAT(province_name,city_name) as PAC,province_code, city_code from tb_province,tb_city where city_code in
-        (select CONCAT(left(area_code,4),'00') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW()) &lt; 168 )
-        and province_code=(select CONCAT(left(city_code,3),'000'))
+        select CONCAT(province_name,city_name) from tb_province,tb_city where city_code in
+        (select CONCAT(left(area_code,4),'00') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW()) &lt; 168) and province_code in
+        (select CONCAT(left(area_code,3),'000') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW())&lt; 168)
+        and left(province_code,2)=left(city_code,2);
     </select>
 </mapper>
