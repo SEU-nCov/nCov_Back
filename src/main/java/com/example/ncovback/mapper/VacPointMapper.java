@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface VacPointMapper {
     List<VacPoint> getVacPointbycity(VacPoint vacPoint);
+
+    List<VacPoint> getvaccinedPoints(VacPoint vacPoint);
 }

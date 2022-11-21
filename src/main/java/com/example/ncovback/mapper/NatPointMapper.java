@@ -8,4 +8,12 @@ import java.util.List;
 @Mapper
 public interface NatPointMapper {
     List<NatPoint> getNatPointbycity(NatPoint natPoint);
+
+    Integer addTest(NatPoint natPoint);
+
+    Integer editTest(NatPoint natPoint);
+
+    Integer deleteTest(NatPoint natPoint);
+
+    List<NatPoint> getTest();
 }

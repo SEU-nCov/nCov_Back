@@ -32,4 +32,18 @@ public class VacPointController {
         }
         return r;
     }
+    @PostMapping("/admin/CovVaccine/get/vaccinedPoints")
+    public R getvaccinedPoints(@RequestBody VacPoint vacPoint){
+        R r=new R();
+        List<VacPoint> result=vacPointService.getvaccinedPoints(vacPoint);
+        if(result.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("暂时未收录该城市信息");
+        }
+        return r;
+    }
 }

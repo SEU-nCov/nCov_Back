@@ -4,4 +4,21 @@
     <select id="getNatPointbycity" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
         select * from tb_natpoint where city_code in (select city_code from tb_city where city_name like #{city_name})
     </select>
+    <insert id="addTest" parameterType="com.example.ncovback.entity.NatPoint">
+        insert into tb_natpoint (nat_pointname,city_code,latitude,longitude,location,open_time,nat_pointphone,nat_unusualcolor,nat_type,nat_turnaroundTime,nat_reservation,nat_extraInfo)
+        values (#{nat_pointname},#{city_code},#{latitude},#{longitude},#{location},#{open_time},#{nat_pointphone},#{nat_unusualcolor},#{nat_type},#{nat_turnaroundTime},#{nat_reservation},#{nat_extraInfo});
+    </insert>
+    <update id="editTest" parameterType="com.example.ncovback.entity.NatPoint">
+        update tb_natpoint set nat_pointname=#{nat_pointname},open_time=#{open_time},nat_pointphone=#{nat_pointphone},nat_unusualcolor=#{nat_unusualcolor},nat_type=#{nat_type},nat_turnaroundTime=#{nat_turnaroundTime},nat_reservation=#{nat_reservation},nat_extraInfo=#{nat_extraInfo}
+        where nat_pointid=#{nat_pointid}
+    </update>
+    <delete id="deleteTest" parameterType="com.example.ncovback.entity.NatPoint">
+        delete
+        from tb_natpoint
+        where nat_pointid=#{nat_pointid};
+    </delete>
+    <select id="getTest" resultType="com.example.ncovback.entity.NatPoint">
+        select *
+        from tb_natpoint;
+    </select>
 </mapper>

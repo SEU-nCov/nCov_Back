@@ -14,4 +14,8 @@ public class VacPointService {
     public List<VacPoint> getVacPointbycity(VacPoint vacPoint) {
         return vacPointMapper.getVacPointbycity(vacPoint);
     }
+
+    public List<VacPoint> getvaccinedPoints(VacPoint vacPoint) {
+        return vacPointMapper.getvaccinedPoints(vacPoint);
+    }
 }

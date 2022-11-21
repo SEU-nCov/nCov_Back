@@ -12,6 +12,10 @@ public class NatPoint {
     private String location;
     private String open_time;
     private String nat_pointphone;
-    private String unusualcolor;
+    private String nat_unusualcolor;
     private String city_name;
+    private Integer nat_type;
+    private Integer nat_turnaroundTime;
+    private Integer nat_reservation;
+    private String nat_extraInfo;
 }

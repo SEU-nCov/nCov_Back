@@ -4,4 +4,7 @@
     <select id="getVacPointbycity" parameterType="com.example.ncovback.entity.VacPoint" resultType="com.example.ncovback.entity.VacPoint">
         select * from tb_vacpoint where city_code in (select city_code from tb_city where city_name like #{city_name})
     </select>
+    <select id="getvaccinedPoints" parameterType="com.example.ncovback.entity.VacPoint" resultType="com.example.ncovback.entity.VacPoint">
+        select * from tb_vacpoint where city_code=#{city_code}
+    </select>
 </mapper>

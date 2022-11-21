@@ -14,4 +14,20 @@ public class NatPointService {
     public List<NatPoint> getNatPointbycity(NatPoint natPoint) {
         return natPointMapper.getNatPointbycity(natPoint);
     }
+
+    public Integer addTest(NatPoint natPoint) {
+        return natPointMapper.addTest(natPoint);
+    }
+
+    public Integer editTest(NatPoint natPoint) {
+        return natPointMapper.editTest(natPoint);
+    }
+
+    public Integer deleteTest(NatPoint natPoint) {
+        return natPointMapper.deleteTest(natPoint);
+    }
+
+    public List<NatPoint> getTest() {
+        return natPointMapper.getTest();
+    }
 }
