@@ -16,4 +16,6 @@ public interface NatPointMapper {
     Integer deleteTest(NatPoint natPoint);
 
     List<NatPoint> getTest();
+
+    NatPoint natLogin(NatPoint natPoint);
 }

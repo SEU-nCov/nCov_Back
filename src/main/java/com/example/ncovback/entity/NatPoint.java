@@ -2,6 +2,8 @@ package com.example.ncovback.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class NatPoint {
     private Integer nat_pointid;
@@ -18,4 +20,6 @@ public class NatPoint {
     private Integer nat_turnaroundTime;
     private Integer nat_reservation;
     private String nat_extraInfo;
+    private String nat_account;
+    private String nat_password;
 }

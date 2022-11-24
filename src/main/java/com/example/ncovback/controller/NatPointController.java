@@ -2,11 +2,13 @@ package com.example.ncovback.controller;
 
 import com.example.ncovback.common.R;
 import com.example.ncovback.entity.NatPoint;
+import com.example.ncovback.entity.User;
 import com.example.ncovback.service.NatPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -80,6 +82,21 @@ public class NatPointController {
         }else {
             r.setCode(201);
             r.setMsg("删除失败");
+        }
+        return r;
+    }
+    @PostMapping("/natLogin")
+    public R natLogin(@RequestBody NatPoint natPoint){
+        NatPoint login=natPointService.natLogin(natPoint);
+        R r=new R();
+        if(login!=null){
+            r.setCode(200);
+            r.setMsg("LoginSuccess");
+            r.setData(login);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("LoginError");
         }
         return r;
     }

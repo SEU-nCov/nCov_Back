@@ -18,4 +18,8 @@ public class VacPointService {
     public List<VacPoint> getvaccinedPoints(VacPoint vacPoint) {
         return vacPointMapper.getvaccinedPoints(vacPoint);
     }
+
+    public Integer editvaccinedPoints(VacPoint vacPoint) {
+        return vacPointMapper.editvaccinedPoints(vacPoint);
+    }
 }

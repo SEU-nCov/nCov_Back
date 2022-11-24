@@ -31,4 +31,32 @@ public class NatResultController {
         }
         return r;
     }
+    @PostMapping("/sampleInput")
+    public R sampleInput(@RequestBody NatResult natResult){
+        R r=new R();
+        Integer res=natResultService.sampleInput(natResult);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("添加成功");
+            r.setData(res);
+        }else {
+            r.setCode(201);
+            r.setMsg("添加失败，请重新提交");
+        }
+        return r;
+    }
+    @PostMapping("/natResultInput")
+    public R natResultInput(@RequestBody NatResult natResult){
+        R r=new R();
+        Integer res=natResultService.natResultInput(natResult);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("录入结果成功");
+            r.setData(res);
+        }else {
+            r.setCode(201);
+            r.setMsg("录入失败，请重新提交");
+        }
+        return r;
+    }
 }

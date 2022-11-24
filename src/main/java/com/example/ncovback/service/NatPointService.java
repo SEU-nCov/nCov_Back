@@ -30,4 +30,8 @@ public class NatPointService {
     public List<NatPoint> getTest() {
         return natPointMapper.getTest();
     }
+
+    public NatPoint natLogin(NatPoint natPoint) {
+        return natPointMapper.natLogin(natPoint);
+    }
 }

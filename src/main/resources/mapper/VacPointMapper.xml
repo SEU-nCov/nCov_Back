@@ -7,4 +7,8 @@
     <select id="getvaccinedPoints" parameterType="com.example.ncovback.entity.VacPoint" resultType="com.example.ncovback.entity.VacPoint">
         select * from tb_vacpoint where city_code=#{city_code}
     </select>
+    <update id="editvaccinedPoints" parameterType="com.example.ncovback.entity.VacPoint">
+        update tb_vacpoint set vac_pointname=#{vac_pointname},open_time=#{open_time},vac_pointphone=#{vac_pointphone},vac_kind=#{vac_kind},vac_extraInfo=#{vac_extraInfo}
+        where vac_pointid=#{vac_pointid}
+    </update>
 </mapper>

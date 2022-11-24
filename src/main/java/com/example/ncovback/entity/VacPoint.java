@@ -14,4 +14,5 @@ public class VacPoint {
     private String vac_pointphone;
     private String vac_kind;
     private String city_name;
+    private String vac_extraInfo;
 }

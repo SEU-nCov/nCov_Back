@@ -21,4 +21,7 @@
         select *
         from tb_natpoint;
     </select>
+    <select id="natLogin" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
+        select * from tb_natpoint where nat_account=#{nat_account} and nat_password=#{nat_password}
+    </select>
 </mapper>

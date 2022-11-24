@@ -46,4 +46,18 @@ public class VacPointController {
         }
         return r;
     }
+    @PostMapping("/admin/CovVaccine/edit/vaccinedPoint")
+    public R editvaccinedPoints(@RequestBody VacPoint vacPoint){
+        R r=new R();
+        Integer result=vacPointService.editvaccinedPoints(vacPoint);
+        if(result!=0){
+            r.setCode(200);
+            r.setMsg("修改成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("修改失败");
+        }
+        return r;
+    }
 }

@@ -7,4 +7,11 @@
         where tb_natres.nat_pointid=tb_natpoint.nat_pointid and tb_natres.user_id=#{user_id} and tb_user.user_id=tb_natres.user_id and tb_natres.nat_result is not null
         order by tb_natres.nat_time desc
     </select>
+    <insert id="sampleInput" parameterType="com.example.ncovback.entity.NatResult">
+        insert into tb_natres (user_id,nat_pointid,nat_time,tube_id)
+        values (#{user_id},#{nat_pointid},NOW(),#{tube_id});
+    </insert>
+    <update id="natResultInput" parameterType="com.example.ncovback.entity.NatResult">
+        update tb_natres set nat_peopleid=#{nat_peopleid},nat_result=#{nat_result} where tube_id=#{tube_id}
+    </update>
 </mapper>
