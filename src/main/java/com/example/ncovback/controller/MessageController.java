@@ -32,6 +32,20 @@ public class MessageController {
         }
         return r;
     }
-
+    @PostMapping("/addnatResultMessage")
+    public R addnatResultMessage(@RequestBody Message message){
+        R r=new R();
+        Integer res= messageService.addnatResultMessage(message);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("发布成功");
+            r.setData(res);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("获取失败");
+        }
+        return r;
+    }
 
 }

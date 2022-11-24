@@ -1,5 +1,6 @@
 package com.example.ncovback.service;
 
+import com.example.ncovback.entity.Message;
 import com.example.ncovback.entity.Sms;
 import com.example.ncovback.mapper.HWSMSMapper;
 import com.huaweicloud.sdk.core.auth.BasicCredentials;
@@ -14,6 +15,7 @@ import com.huaweicloud.sdk.core.exception.RequestTimeoutException;
 import com.huaweicloud.sdk.core.exception.ServiceResponseException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -94,6 +96,33 @@ public class HWSMSService {
                 } catch (ConnectionException | RequestTimeoutException | ServiceResponseException e) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    public void sendnatResultSMS(Message message) {
+        List<String> topic_list=hwsmsMapper.getTopiclist(message);
+        String ak = "XLAEI6LJ84URAVLWXY2U";
+        String sk = "3DcydvQUwdjlMbd26O2Ko8Ea5GrmSMZrZ0B6PMhS";
+        ICredential auth = new BasicCredentials()
+                .withAk(ak)
+                .withSk(sk);
+
+        SmnClient client = SmnClient.newBuilder()
+                .withCredential(auth)
+                .withRegion(SmnRegion.valueOf("cn-east-3"))
+                .build();
+        for(String topicUrn:topic_list) {
+            PublishMessageRequest request = new PublishMessageRequest();
+            request.withTopicUrn(topicUrn);
+            PublishMessageRequestBody body = new PublishMessageRequestBody();
+            body.withMessageTemplateName("natres");
+            body.withSubject("【SEU防疫宝】");
+            request.withBody(body);
+            try {
+                PublishMessageResponse response = client.publishMessage(request);
+            } catch (ConnectionException | RequestTimeoutException | ServiceResponseException e) {
+                e.printStackTrace();
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.ncovback.controller;
 
 import com.example.ncovback.common.R;
+import com.example.ncovback.entity.Message;
 import com.example.ncovback.entity.Sms;
 import com.example.ncovback.service.HWSMSService;
 import com.huaweicloud.sdk.core.auth.BasicCredentials;
@@ -77,6 +78,15 @@ public class HWSMSController {
         r.setCode(200);
         r.setMsg("getCodeSuccess");
         r.setData(code);
+        return r;
+    }
+
+    @PostMapping("/sendnatResultSMS")
+    public R sendnatResultSMS(@RequestBody Message message){
+        R r=new R();
+        hwsmsService.sendnatResultSMS(message);
+        r.setCode(200);
+        r.setMsg("Success");
         return r;
     }
 

@@ -10,4 +10,7 @@
     <select id="getTopicurn" parameterType="com.example.ncovback.entity.Sms" resultType="java.lang.String">
         select topicurn from tb_hwsms where phone=#{phone};
     </select>
+    <select id="getTopiclist" parameterType="com.example.ncovback.entity.Message" resultType="java.lang.String">
+        select topicurn from tb_hwsms where phone in (select phone from tb_user where user_id in (select user_id from tb_natres where tube_id=#{tube_id}))
+    </select>
 </mapper>

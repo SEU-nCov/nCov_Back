@@ -4,4 +4,12 @@
     <select id="getAllMessage" parameterType="com.example.ncovback.entity.Message" resultType="com.example.ncovback.entity.Message">
         select * from tb_message where user_id=#{user_id} order by message_time desc
     </select>
+    <select id="getUserbytubeid" parameterType="com.example.ncovback.entity.Message" resultType="java.lang.Integer">
+        select user_id
+        from tb_natres where tube_id=#{tube_id};
+    </select>
+    <insert id="addnatResultMessage" parameterType="com.example.ncovback.entity.Message">
+        insert into tb_message (message_type,user_id,message_time,message_detail)
+        values ('核酸结果提醒',#{user_id},NOW(),'核酸结果已出，请至健康码界面查询');
+    </insert>
 </mapper>

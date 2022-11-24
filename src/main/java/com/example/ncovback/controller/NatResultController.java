@@ -3,6 +3,7 @@ package com.example.ncovback.controller;
 import com.example.ncovback.common.R;
 import com.example.ncovback.entity.NatResult;
 import com.example.ncovback.entity.User;
+import com.example.ncovback.service.MessageService;
 import com.example.ncovback.service.NatResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
