@@ -13,4 +13,13 @@
     <select id="getTopiclist" parameterType="com.example.ncovback.entity.Message" resultType="java.lang.String">
         select topicurn from tb_hwsms where phone in (select phone from tb_user where user_id in (select user_id from tb_natres where tube_id=#{tube_id}))
     </select>
+    <select id="getTopiclistbyArea" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select topicurn from tb_hwsms where phone in (select phone from tb_user where left(town_id,6)=#{area_code} and phone is not null )
+    </select>
+    <select id="getUserListbyarea" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select user_id from tb_user where left(town_id,6)=#{area_code};
+    </select>
+    <insert id="addCovAllTestMessage" parameterType="java.lang.Integer">
+        insert into tb_message (message_type,user_id,message_time,message_detail) values('全员核酸提醒',#{user_id},NOW(),'请根据短信提示积极参与全员核酸检测，谢谢配合');
+    </insert>
 </mapper>

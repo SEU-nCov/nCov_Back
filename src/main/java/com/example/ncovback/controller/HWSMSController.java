@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -90,5 +94,28 @@ public class HWSMSController {
         return r;
     }
 
+    @PostMapping("/admin/CovAllTest/submit")
+    public R submitCovAllTest(@RequestBody Map<String,String> data){
+        R r=new R();
+        String area_code= data.get("area_code");
+        Date start_time= null;
+        try {
+            start_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(data.get("start_time"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date end_time= null;
+        try {
+            end_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(data.get("end_time"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String extraInfo= data.get("extraInfo");
+        hwsmsService.submitCovAllTest(Integer.valueOf(area_code),start_time,end_time,extraInfo);
+        Integer res=hwsmsService.addCovAllTestMessage(area_code);
+        r.setCode(200);
+        r.setMsg("发布成功");
+        return r;
+    }
 }
 

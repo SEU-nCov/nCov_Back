@@ -16,4 +16,8 @@ public class TravelPolicyService {
     public TravelPolicy getSingleCityPolicy(TravelPolicy travelPolicy) {
         return travelPolicyMapper.getSingleCityPolicy(travelPolicy);
     }
+
+    public Integer editCovPolicy(TravelPolicy travelPolicy) {
+        return travelPolicyMapper.editCovPolicy(travelPolicy);
+    }
 }

@@ -8,4 +8,6 @@ public interface TravelPolicyMapper {
     TravelPolicy getTravelPolicy(TravelPolicy travelPolicy);
 
     TravelPolicy getSingleCityPolicy(TravelPolicy travelPolicy);
+
+    Integer editCovPolicy(TravelPolicy travelPolicy);
 }

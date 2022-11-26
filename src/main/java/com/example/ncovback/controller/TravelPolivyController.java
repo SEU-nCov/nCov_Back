@@ -42,4 +42,18 @@ public class TravelPolivyController {
         }
         return r;
     }
+    @PostMapping("/admin/CovPolicy/edit")
+    public R editCovPolicy(@RequestBody TravelPolicy travelPolicy){
+        R r=new R();
+        Integer res=travelPolicyService.editCovPolicy(travelPolicy);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("修改成功");
+            r.setData(res);
+        }else {
+            r.setCode(201);
+            r.setMsg("修改失败");
+        }
+        return r;
+    }
 }

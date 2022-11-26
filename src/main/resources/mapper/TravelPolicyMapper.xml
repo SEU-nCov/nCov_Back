@@ -11,4 +11,7 @@
     <select id="getSingleCityPolicy" parameterType="com.example.ncovback.entity.TravelPolicy" resultType="com.example.ncovback.entity.TravelPolicy">
         select * from tb_citypolicy where city_code=#{from_code}
     </select>
+    <update id="editCovPolicy" parameterType="com.example.ncovback.entity.TravelPolicy">
+        update tb_citypolicy set come_policy=#{come_policy},leave_policy=#{leave_policy},create_time=NOW() where city_code=#{from_code};
+    </update>
 </mapper>
