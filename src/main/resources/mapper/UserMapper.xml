@@ -5,7 +5,7 @@
         select * from tb_user where phone=#{phone} and password=#{password};
     </select>
     <insert id="register" parameterType="com.example.ncovback.entity.User" >
-        insert into tb_user (phone,password,user_name,user_identify,user_signcolor,sign_timeleft) values(#{phone},#{password},#{user_name},#{user_identify},0,0 )
+        insert into tb_user (phone,password,user_name,user_identify,user_signcolor) values(#{phone},#{password},#{user_name},#{user_identify},0 )
     </insert>
     <select id="ifExist" parameterType="com.example.ncovback.entity.User" resultType="java.lang.Integer">
         select count(*) from tb_user where phone=#{phone};

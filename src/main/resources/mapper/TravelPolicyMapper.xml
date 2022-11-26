@@ -8,4 +8,7 @@
              (select come_policy as to_policy
               from tb_citypolicy where city_code in (select city_code from tb_city where city_name like #{to_city} )) as C;
     </select>
+    <select id="getSingleCityPolicy" parameterType="com.example.ncovback.entity.TravelPolicy" resultType="com.example.ncovback.entity.TravelPolicy">
+        select * from tb_citypolicy where city_code=#{from_code}
+    </select>
 </mapper>

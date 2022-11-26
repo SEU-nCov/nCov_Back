@@ -10,4 +10,6 @@ public class TravelPolicy {
     private String to_city;
     private String  from_policy;
     private String to_policy;
+    private String come_policy;
+    private String leave_policy;
 }

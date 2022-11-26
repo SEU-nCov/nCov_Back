@@ -28,4 +28,18 @@ public class TravelPolivyController {
         }
         return r;
     }
+    @PostMapping("/getSingleCityPolicy")
+    public R getSingleCityPolicy(@RequestBody TravelPolicy travelPolicy){
+        R r =new R();
+        TravelPolicy result=travelPolicyService.getSingleCityPolicy(travelPolicy);
+        if(result==null){
+            r.setCode(201);
+            r.setMsg("暂时未收录");
+        }else {
+            r.setCode(200);
+            r.setMsg("查询成功");
+            r.setData(result);
+        }
+        return r;
+    }
 }
