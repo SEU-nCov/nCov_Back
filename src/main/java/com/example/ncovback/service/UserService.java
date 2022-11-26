@@ -71,4 +71,16 @@ public class UserService {
     public List<Town> getTownbyarea(String area_name) {
         return userMapper.getTownbyarea(area_name);
     }
+
+    public Integer setYellowCode(Integer user_id) {
+        return userMapper.setYellowCode(user_id);
+    }
+
+    public Integer setRedCode(Integer user_id) {
+        return userMapper.setRedCode(user_id);
+    }
+
+    public Integer setGreenCode(Integer user_id) {
+        return userMapper.setGreenCode(user_id);
+    }
 }

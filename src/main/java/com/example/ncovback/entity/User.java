@@ -17,4 +17,5 @@ public class User {
     private String town_id;
     private String town_name;
     private String detail_location;
+    private String area_name;
 }

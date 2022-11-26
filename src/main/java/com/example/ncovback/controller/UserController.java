@@ -168,4 +168,52 @@ public class UserController {
         }
         return r;
     }
+    @PostMapping("/admin/setYellowCode")
+    public R setYellowCode(@RequestBody Map<String,Integer> data){
+        R r=new R();
+        Integer user_id=data.get("user_id");
+        Integer res=userService.setYellowCode(user_id);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("修改黄码成功");
+            r.setData(res);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
+    @PostMapping("/admin/setRedCode")
+    public R setRedCode(@RequestBody Map<String,Integer> data){
+        R r=new R();
+        Integer user_id=data.get("user_id");
+        Integer res=userService.setRedCode(user_id);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("修改红码成功");
+            r.setData(res);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
+    @PostMapping("/admin/setGreenCode")
+    public R setGreenCode(@RequestBody Map<String,Integer> data){
+        R r=new R();
+        Integer user_id=data.get("user_id");
+        Integer res=userService.setGreenCode(user_id);
+        if(res!=0){
+            r.setCode(200);
+            r.setMsg("修改绿码成功");
+            r.setData(res);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
 }

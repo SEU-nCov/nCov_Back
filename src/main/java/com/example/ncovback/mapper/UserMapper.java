@@ -36,4 +36,10 @@ public interface UserMapper {
     String getTownid(User user);
 
     List<Town> getTownbyarea(String area_name);
+
+    Integer setYellowCode(Integer user_id);
+
+    Integer setRedCode(Integer user_id);
+
+    Integer setGreenCode(Integer user_id);
 }
