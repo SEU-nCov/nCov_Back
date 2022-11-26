@@ -53,12 +53,12 @@
         select distinct concat(area_code,town) as town_id,town_name from tb_town where area_code in (select area_code from tb_area where area_name=#{area_name});
     </select>
     <update id="setYellowCode" parameterType="java.lang.Integer">
-        update tb_user set user_signcolor=1 where user_id=#{user_id}
+        update tb_user set user_signcolor=1,sign_timeleft=NOW() where user_id=#{user_id}
     </update>
     <update id="setRedCode" parameterType="java.lang.Integer">
-        update tb_user set user_signcolor=2 where user_id=#{user_id}
+        update tb_user set user_signcolor=2,sign_timeleft=NOW() where user_id=#{user_id}
     </update>
     <update id="setGreenCode" parameterType="java.lang.Integer">
-        update tb_user set user_signcolor=0 where user_id=#{user_id}
+        update tb_user set user_signcolor=0,sign_timeleft=NOW() where user_id=#{user_id}
     </update>
 </mapper>

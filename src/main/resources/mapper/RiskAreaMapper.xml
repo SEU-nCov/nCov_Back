@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncovback.mapper.RiskAreaMapper">
+    <select id="getAllRiskArea" resultType="com.example.ncovback.entity.RiskArea">
+        select * from tb_riskarea;
+    </select>
+    <select id="getAllRiskAreabyAreaCode" parameterType="com.example.ncovback.entity.RiskArea" resultType="com.example.ncovback.entity.RiskArea">
+        select * from tb_riskarea where area_code=#{area_code};
+    </select>
+    <update id="editRiskArea" parameterType="com.example.ncovback.entity.RiskArea">
+        update tb_riskarea set risk_level=#{risk_level} where risk_id=#{risk_id};
+    </update>
+    <insert id="addRiskArea" parameterType="com.example.ncovback.entity.RiskArea">
+        insert into tb_riskarea (area_code,risk_address,update_time,risk_level)
+        values (#{area_code},#{risk_address},NOW(),#{risk_level});
+    </insert>
+    <delete id="deleteRiskArea" parameterType="com.example.ncovback.entity.RiskArea">
+        delete from tb_riskarea where risk_id=#{risk_id};
+    </delete>
+</mapper>
