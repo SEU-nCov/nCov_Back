@@ -48,4 +48,7 @@
     <select id="getTownid" parameterType="com.example.ncovback.entity.User" resultType="java.lang.String">
         select distinct concat(area_code,town) as town_id from tb_town where town_name=#{town_name};
     </select>
+    <select id="getTownbyarea" parameterType="java.lang.String" resultType="com.example.ncovback.entity.Town">
+        select distinct concat(area_code,town) as town_id,town_name from tb_town where area_code in (select area_code from tb_area where area_name=#{area_name});
+    </select>
 </mapper>

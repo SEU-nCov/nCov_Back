@@ -1,6 +1,7 @@
 package com.example.ncovback.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.ncovback.entity.Town;
 import com.example.ncovback.entity.User;
 import com.example.ncovback.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,9 @@ public class UserService {
 
     public String getTownid(User user) {
         return userMapper.getTownid(user);
+    }
+
+    public List<Town> getTownbyarea(String area_name) {
+        return userMapper.getTownbyarea(area_name);
     }
 }

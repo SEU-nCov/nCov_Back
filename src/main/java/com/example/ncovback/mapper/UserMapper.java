@@ -1,5 +1,6 @@
 package com.example.ncovback.mapper;
 
+import com.example.ncovback.entity.Town;
 import com.example.ncovback.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,4 +34,6 @@ public interface UserMapper {
     Integer declareHealthCode(User user);
 
     String getTownid(User user);
+
+    List<Town> getTownbyarea(String area_name);
 }

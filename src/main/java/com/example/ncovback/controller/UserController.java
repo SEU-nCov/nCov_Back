@@ -2,6 +2,7 @@ package com.example.ncovback.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.ncovback.common.R;
+import com.example.ncovback.entity.Town;
 import com.example.ncovback.entity.User;
 import com.example.ncovback.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,6 +149,22 @@ public class UserController {
         }else {
             r.setCode(201);
             r.setMsg("Error");
+        }
+        return r;
+    }
+    @PostMapping("/getTownbyarea")
+    public R getTownbyarea(@RequestBody Map<String,String> data){
+        R r=new R();
+        String area_name=data.get("area_name");
+        List<Town> town_list=userService.getTownbyarea(area_name);
+        if(town_list.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(town_list);
+        }
+        else {
+            r.setCode(201);
+            r.setMsg("error");
         }
         return r;
     }
