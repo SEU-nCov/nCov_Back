@@ -22,4 +22,5 @@ public class NatPoint {
     private String nat_extraInfo;
     private String nat_account;
     private String nat_password;
+    private String area_code;
 }

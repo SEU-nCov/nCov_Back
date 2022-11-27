@@ -8,4 +8,5 @@ public class Admin {
     private String manager_phone;
     private String manager_password;
     private String manager_name;
+    private Integer city_code;
 }
