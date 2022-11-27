@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncovback.mapper.ConsultMapper">
+    <select id="getUserInfo" parameterType="com.example.ncovback.entity.Consult" resultType="com.example.ncovback.entity.Consult">
+        select  CONCAT(left(town_id,4),'00') as city_code,user_id, user_name, user_identify,phone as user_phone,detail_location as user_location from tb_user where user_id=#{user_id};
+    </select>
+    <insert id="addUserconsult" parameterType="com.example.ncovback.entity.Consult">
+        insert into tb_consult (city_code,user_id,user_name,user_identify,user_phone,user_location,consult_content,consult_time,consult_status)
+        values (#{city_code},#{user_id},#{user_name},#{user_identify},#{user_phone},#{user_location},#{consult_content},NOW(),0);
+    </insert>
+    <select id="getCityConsult" parameterType="com.example.ncovback.entity.Consult" resultType="com.example.ncovback.entity.Consult">
+        select * from tb_consult where city_code=#{city_code}
+    </select>
+    <update id="handleConsult" parameterType="com.example.ncovback.entity.Consult">
+        update tb_consult set consult_status=1,consult_answer=#{consult_answer} where consult_id=#{consult_id}
+    </update>
+    <select id="getUserid" parameterType="com.example.ncovback.entity.Consult" resultType="com.example.ncovback.entity.Consult">
+        select user_id from tb_consult where consult_id=#{consult_id}
+    </select>
+    <insert id="addConsultResultMessage" parameterType="com.example.ncovback.entity.Consult">
+        insert into tb_message (message_type,user_id,message_time,message_detail)
+        values ('咨询结果提醒',#{user_id},NOW(),#{consult_answer});
+    </insert>
+    <select id="getConsultStatusvalue" parameterType="com.example.ncovback.entity.Consult" resultType="com.example.ncovback.entity.Status_value">
+        select consult_status as status,count(*) as s_value
+        from tb_consult where city_code=#{city_code} group by consult_status ;
+    </select>
+</mapper>
