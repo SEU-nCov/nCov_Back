@@ -4,4 +4,17 @@
     <select id="getAllTestPoint" resultType="com.example.ncovback.entity.TestPoint">
         select * from tb_testpoint;
     </select>
+    <select id="getTestPointbycity" parameterType="com.example.ncovback.entity.TestPoint" resultType="com.example.ncovback.entity.TestPoint">
+        select * from tb_testpoint where city_code=#{city_code}
+    </select>
+    <select id="getTestPointbyarea" parameterType="com.example.ncovback.entity.TestPoint" resultType="com.example.ncovback.entity.TestPoint">
+        select * from tb_testpoint where area_code=#{area_code}
+    </select>
+    <insert id="addTestPointbycity" parameterType="com.example.ncovback.entity.TestPoint">
+        insert into tb_testpoint (city_code,area_code,tp_location,tp_name,tp_phone)
+        values (#{city_code},#{area_code},#{tp_location},#{tp_name},#{tp_phone});
+    </insert>
+    <update id="editTestPointbycity" parameterType="com.example.ncovback.entity.TestPoint">
+        update tb_testpoint set tp_phone=#{tp_phone} where tp_id=#{tp_id}
+    </update>
 </mapper>

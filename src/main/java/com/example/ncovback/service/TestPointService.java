@@ -14,4 +14,20 @@ public class TestPointService {
     public List<TestPoint> getAllTestPoint() {
         return testPointMapper.getAllTestPoint();
     }
+
+    public List<TestPoint> getTestPointbycity(TestPoint testPoint) {
+        return testPointMapper.getTestPointbycity(testPoint);
+    }
+
+    public Integer addTestPointbycity(TestPoint testPoint) {
+        return  testPointMapper.addTestPointbycity(testPoint);
+    }
+
+    public Integer editTestPointbycity(TestPoint testPoint) {
+        return testPointMapper.editTestPointbycity(testPoint);
+    }
+
+    public List<TestPoint> getTestPointbyarea(TestPoint testPoint) {
+        return testPointMapper.getTestPointbyarea(testPoint);
+    }
 }
