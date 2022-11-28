@@ -13,7 +13,7 @@ public interface VacResultMapper {
 
     List<String> getCovVacpeopleName();
 
-    List<String> getCovVacpointName();
+    List<String> getCovVacpointName(VacResult vacResult);
 
     List<VacResult> searchVaccine(VacResult vacResult);
 

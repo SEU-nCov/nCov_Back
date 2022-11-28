@@ -6,19 +6,30 @@
         where tb_vacpoint.vac_pointid=tb_vaccination.vac_pointid and tb_vaccination.user_id=#{user_id}
         order by tb_vaccination.vac_time;
     </select>
-    <select id="getCovVacpeopleName" resultType="java.lang.String">
-        select distinct user_name from tb_user where user_id in (select user_id from tb_vaccination)
+    <select id="getCovVacpeopleName" parameterType="com.example.ncovback.entity.VacResult" resultType="java.lang.String">
+        select distinct user_name from tb_user where user_id in (select user_id from tb_vaccination ane )
     </select>
     <select id="getCovVacpointName" resultType="java.lang.String">
-        select distinct vac_pointname from tb_vacpoint where vac_pointid in (select vac_pointid from tb_vaccination)
+        select distinct vac_pointname from tb_vacpoint where vac_pointid in (select vac_pointid from tb_vaccination) and city_code=#{city_code}
     </select>
     <select id="searchVaccine" parameterType="com.example.ncovback.entity.VacResult" resultType="com.example.ncovback.entity.VacResult">
-        select tb_vaccination.*,tb_user.phone, tb_user.user_name,tb_user.user_identify,tb_vacpoint.vac_pointname
-               from tb_vaccination,tb_user,tb_vacpoint where tb_vaccination.user_id in (select user_id from tb_user where user_name=#{user_name})
-                                             and tb_vaccination.user_id=tb_user.user_id
-                                       and tb_vaccination.vac_pointid in (select distinct vac_pointid from tb_vacpoint where vac_pointname=#{vac_pointname})
-                                                         and tb_vaccination.vac_pointid=tb_vacpoint.vac_pointid
-                                       and vac_time=#{vac_time} and dose=#{dose}
+        select tb_vaccination.*,tb_user.phone, tb_user.user_name,tb_user.user_identify,tb_user.phone,tb_vacpoint.vac_pointname,tb_vacpoint.location as address
+               from tb_vaccination,tb_user,tb_vacpoint where tb_vaccination.user_id=tb_user.user_id and tb_vaccination.vac_pointid=tb_vacpoint.vac_pointid and tb_vaccination.vac_pointid in (select distinct vac_pointid from tb_vacpoint where city_code=#{city_code})
+                                        <choose>
+                                            <when test="user_name!=null and user_name!=''">
+                                                and tb_vaccination.user_id in (select user_id from tb_user where user_name=#{user_name})
+                                            </when>
+                                        </choose>
+                                        <choose>
+                                            <when test="vac_pointname!=null and vac_pointname!=''">and tb_vaccination.vac_pointid in (select distinct vac_pointid from tb_vacpoint where vac_pointname=#{vac_pointname})</when>
+                                        </choose>
+                                        <choose>
+                                            <when test="vac_time!=null and vac_time !=''">and vac_time=#{vac_time}</when>
+                                        </choose>
+                                        <choose>
+                                            <when test="dose!=null and dose!=''">and dose=#{dose}</when>
+                                        </choose>
+
     </select>
     <select id="getvaccineAreaRanking" parameterType="java.lang.Integer" resultType="com.example.ncovback.entity.VaccinedCity">
         select area_name,count(*) as vaccined_value  from tb_vacpoint,tb_area where city_code=#{city_code} and tb_area.area_code=tb_vacpoint.area_code  group by tb_vacpoint.area_code order by vaccined_value desc

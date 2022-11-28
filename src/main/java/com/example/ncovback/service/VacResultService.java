@@ -21,8 +21,8 @@ public class VacResultService {
         return vacResultMapper.getCovVacpeopleName();
     }
 
-    public List<String> getCovVacpointName() {
-        return vacResultMapper.getCovVacpointName();
+    public List<String> getCovVacpointName(VacResult vacResult) {
+        return vacResultMapper.getCovVacpointName(vacResult);
     }
 
     public List<VacResult> searchVaccine(VacResult vacResult) {

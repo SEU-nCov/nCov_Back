@@ -16,4 +16,5 @@ public class VacResult {
     private String vac_pointname;
     private String address;
     private Integer dose;
+    private String city_code;
 }

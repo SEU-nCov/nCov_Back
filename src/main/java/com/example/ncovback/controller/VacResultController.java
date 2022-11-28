@@ -46,10 +46,10 @@ public class VacResultController {
         return r;
     }
 
-    @GetMapping("/admin/CovVaccine/get/pointName")
-    public R getCovVacpointName(){
+    @PostMapping("/admin/CovVaccine/get/pointName")
+    public R getCovVacpointName(@RequestBody VacResult vacResult){
         R r=new R();
-        List<String> name_list=vacResultService.getCovVacpointName();
+        List<String> name_list=vacResultService.getCovVacpointName(vacResult);
         if(name_list.size()!=0){
             r.setCode(200);
             r.setMsg("获取成功");
