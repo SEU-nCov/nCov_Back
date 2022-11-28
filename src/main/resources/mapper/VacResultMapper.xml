@@ -27,7 +27,7 @@
                                             <when test="vac_time!=null and vac_time !=''">and vac_time=#{vac_time}</when>
                                         </choose>
                                         <choose>
-                                            <when test="dose!=null and dose!=''">and dose=#{dose}</when>
+                                            <when test="dose!=null">and dose=#{dose}</when>
                                         </choose>
 
     </select>

@@ -18,4 +18,10 @@ public interface NatPointMapper {
     List<NatPoint> getTest();
 
     NatPoint natLogin(NatPoint natPoint);
+
+    List<NatPoint> getPointsbyname(NatPoint natPoint);
+
+    List<NatPoint> getPointsbyarea(NatPoint natPoint);
+
+    List<NatPoint> getPointsbyThreeVariable(NatPoint natPoint);
 }

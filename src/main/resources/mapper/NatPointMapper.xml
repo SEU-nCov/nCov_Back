@@ -24,4 +24,22 @@
     <select id="natLogin" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
         select * from tb_natpoint where nat_account=#{nat_account} and nat_password=#{nat_password}
     </select>
+    <select id="getPointsbyname" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
+        select * from tb_natpoint where city_code=#{city_code} and nat_pointname=#{nat_pointname}
+    </select>
+    <select id="getPointsbyarea" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
+        select * from tb_natpoint where city_code=#{city_code} and area_code=#{area_code}
+    </select>
+    <select id="getPointsbyThreeVariable" parameterType="com.example.ncovback.entity.NatPoint" resultType="com.example.ncovback.entity.NatPoint">
+        select * from tb_natpoint where city_code=#{city_code}
+        <choose>
+            <when test="nat_type!=null ">and nat_type=#{nat_type}</when>
+        </choose>
+            <choose>
+                <when test="nat_turnaroundTime!=null"> and nat_turnaroundTime=#{nat_turnaroundTime}</when>
+            </choose>
+            <choose>
+                <when test="nat_reservation!=null"> and nat_reservation=#{nat_reservation}</when>
+            </choose>
+    </select>
 </mapper>

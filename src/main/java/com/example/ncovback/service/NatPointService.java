@@ -34,4 +34,16 @@ public class NatPointService {
     public NatPoint natLogin(NatPoint natPoint) {
         return natPointMapper.natLogin(natPoint);
     }
+
+    public List<NatPoint> getPointsbyname(NatPoint natPoint) {
+        return natPointMapper.getPointsbyname(natPoint);
+    }
+
+    public List<NatPoint> getPointsbyarea(NatPoint natPoint) {
+        return natPointMapper.getPointsbyarea(natPoint);
+    }
+
+    public List<NatPoint> getPointsbyThreeVariable(NatPoint natPoint) {
+        return natPointMapper.getPointsbyThreeVariable(natPoint);
+    }
 }

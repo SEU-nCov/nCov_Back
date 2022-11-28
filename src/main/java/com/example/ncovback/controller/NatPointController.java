@@ -100,4 +100,47 @@ public class NatPointController {
         }
         return r;
     }
+
+    @PostMapping("/admin/CovVaccine/getPointsbyname")
+    public R getPointsbyname(@RequestBody NatPoint natPoint){
+        R r=new R();
+        List<NatPoint> result=natPointService.getPointsbyname(natPoint);
+        if(result.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("暂时未收录该城市信息");
+        }
+        return r;
+    }
+    @PostMapping("/admin/CovVaccine/getPointsbyarea")
+    public R getPointsbyarea(@RequestBody NatPoint natPoint){
+        R r=new R();
+        List<NatPoint> result=natPointService.getPointsbyarea(natPoint);
+        if(result.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("暂时未收录该城市信息");
+        }
+        return r;
+    }
+    @PostMapping("/admin/CovVaccine/getPointsbyThreeVariable")
+    public R getPointsbyThreeVariable(@RequestBody NatPoint natPoint){
+        R r=new R();
+        List<NatPoint> result=natPointService.getPointsbyThreeVariable(natPoint);
+        if(result.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("暂时未收录信息");
+        }
+        return r;
+    }
 }
