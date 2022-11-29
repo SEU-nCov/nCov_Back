@@ -83,4 +83,19 @@ public class TestPointController {
         }
         return r;
     }
+
+    @PostMapping("/admin/delete/TestPoint")
+    public R deleteTestPointbycity(@RequestBody TestPoint testPoint){
+        R r=new R();
+        Integer result=testPointService.deleteTestPointbycity(testPoint);
+        if(result!=0){
+            r.setCode(200);
+            r.setMsg("删除成功");
+            r.setData(result);
+        }else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
 }

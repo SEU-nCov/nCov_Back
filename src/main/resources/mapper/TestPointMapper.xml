@@ -17,4 +17,9 @@
     <update id="editTestPointbycity" parameterType="com.example.ncovback.entity.TestPoint">
         update tb_testpoint set tp_phone=#{tp_phone} where tp_id=#{tp_id}
     </update>
+    <delete id="deleteTestPointbycity" parameterType="com.example.ncovback.entity.TestPoint">
+        delete
+        from tb_testpoint
+        where tp_id=#{tp_id};
+    </delete>
 </mapper>

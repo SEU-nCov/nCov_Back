@@ -30,4 +30,8 @@ public class TestPointService {
     public List<TestPoint> getTestPointbyarea(TestPoint testPoint) {
         return testPointMapper.getTestPointbyarea(testPoint);
     }
+
+    public Integer deleteTestPointbycity(TestPoint testPoint) {
+        return testPointMapper.deleteTestPointbycity(testPoint);
+    }
 }

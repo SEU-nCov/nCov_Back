@@ -16,4 +16,6 @@ public interface TestPointMapper {
     Integer editTestPointbycity(TestPoint testPoint);
 
     List<TestPoint> getTestPointbyarea(TestPoint testPoint);
+
+    Integer deleteTestPointbycity(TestPoint testPoint);
 }
