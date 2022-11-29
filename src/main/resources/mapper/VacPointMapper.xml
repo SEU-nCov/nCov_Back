@@ -11,4 +11,7 @@
         update tb_vacpoint set vac_pointname=#{vac_pointname},open_time=#{open_time},vac_pointphone=#{vac_pointphone},vac_kind=#{vac_kind},vac_extraInfo=#{vac_extraInfo}
         where vac_pointid=#{vac_pointid}
     </update>
+    <select id="getAreabyCityCode" parameterType="java.lang.String" resultType="com.example.ncovback.entity.Town">
+        select * from tb_area where CONCAT(LEFT(area_code,4),'00')=#{city_code}
+    </select>
 </mapper>

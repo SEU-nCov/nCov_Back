@@ -1,5 +1,6 @@
 package com.example.ncovback.service;
 
+import com.example.ncovback.entity.Town;
 import com.example.ncovback.entity.VacPoint;
 import com.example.ncovback.mapper.VacPointMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class VacPointService {
 
     public Integer editvaccinedPoints(VacPoint vacPoint) {
         return vacPointMapper.editvaccinedPoints(vacPoint);
+    }
+
+    public List<Town> getAreabyCityCode(String city_code) {
+        return vacPointMapper.getAreabyCityCode(city_code);
     }
 }

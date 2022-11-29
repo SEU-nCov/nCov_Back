@@ -11,4 +11,5 @@ public class Town {
     private String area;
     private String town;
     private String town_id;
+    private String area_name;
 }
