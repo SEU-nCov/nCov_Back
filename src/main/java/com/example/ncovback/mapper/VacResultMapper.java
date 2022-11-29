@@ -16,6 +16,9 @@ public interface VacResultMapper {
     List<String> getCovVacpointName(VacResult vacResult);
 
     List<VacResult> searchVaccine(VacResult vacResult);
+    
 
-    List<VaccinedCity> getvaccineAreaRanking(Integer city_code);
+    List<VaccinedCity> getVacCitybyCode(Integer city_code);
+
+    VaccinedCity getvaccineAreaRanking(VaccinedCity area);
 }
