@@ -14,4 +14,33 @@
     <update id="natResultInput" parameterType="com.example.ncovback.entity.NatResult">
         update tb_natres set nat_peopleid=#{nat_peopleid},nat_result=#{nat_result} where tube_id=#{tube_id}
     </update>
+
+    <select id="getTenDayNatnumber" parameterType="java.lang.String" resultType="com.example.ncovback.entity.NatStatistics">
+        select nat_time,count(*) as nat_number from tb_natres where date_sub(CURDATE(),INTERVAL 10 DAY) &lt;= DATE (nat_time)
+            and nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code})
+            group by nat_time order by nat_time
+    </select>
+    <select id="getNatStatisticsCollected" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from tb_natres where nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code})
+    </select>
+    <select id="getNatStatisticsTested" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from tb_natres where nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code}) and nat_result is not null
+    </select>
+    <select id="getNatStatisticsNegative" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from tb_natres where nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code}) and nat_result='阴性'
+    </select>
+    <select id="getNatCitybyCode" parameterType="java.lang.String" resultType="com.example.ncovback.entity.NatStatistics">
+        select area_code,area_name from tb_area where CONCAT(LEFT(area_code,4),'00')=#{city_code}
+    </select>
+    <select id="getNatnumOfArea" parameterType="com.example.ncovback.entity.NatStatistics" resultType="com.example.ncovback.entity.NatStatistics">
+        select tb_area.area_code,area_name,count(*) as t_areanat from tb_natres,tb_natpoint,tb_area where tb_natres.nat_pointid=tb_natpoint.nat_pointid
+                                                                                                                and tb_natpoint.area_code=tb_area.area_code
+                                                                                                                and tb_natpoint.area_code=#{area_code}
+    </select>
+    <select id="getTodayNatnumOfArea" parameterType="com.example.ncovback.entity.NatStatistics" resultType="com.example.ncovback.entity.NatStatistics">
+        select tb_area.area_code,area_name,count(*) as t_areanat from tb_natres,tb_natpoint,tb_area where tb_natres.nat_pointid=tb_natpoint.nat_pointid
+                                                                                                      and tb_natpoint.area_code=tb_area.area_code
+                                                                                                      and tb_natpoint.area_code=#{area_code}
+                                                                                                        and DATE(nat_time)=CURDATE()
+    </select>
 </mapper>

@@ -1,11 +1,14 @@
 package com.example.ncovback.service;
 
 import com.example.ncovback.entity.NatResult;
+import com.example.ncovback.entity.NatStatistics;
 import com.example.ncovback.entity.User;
+import com.example.ncovback.entity.VaccinedCity;
 import com.example.ncovback.mapper.NatResultMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -30,5 +33,41 @@ public class NatResultService {
 
     public Integer natResultInput(NatResult natResult) {
         return natResultMapper.natResultInput(natResult);
+    }
+
+    public List<NatStatistics> getTenDayNatnumber(String city_code) {
+        return natResultMapper.getTenDayNatnumber(city_code);
+    }
+
+    public Integer getNatStatisticsCollected(String city_code) {
+        return natResultMapper.getNatStatisticsCollected(city_code);
+    }
+
+    public Integer getNatStatisticsTested(String city_code) {
+        return natResultMapper.getNatStatisticsTested(city_code);
+    }
+
+    public Integer getNatStatisticsNegative(String city_code) {
+        return natResultMapper.getNatStatisticsNegative(city_code);
+    }
+
+    public List<NatStatistics> getNatnumOfArea(String city_code) {
+        List<NatStatistics> area_list=natResultMapper.getNatCitybyCode(city_code);
+        for(NatStatistics area:area_list){
+            NatStatistics temp=natResultMapper.getNatnumOfArea(area);
+            area.setT_areanat(temp.getT_areanat());
+        }
+        Collections.sort(area_list);
+        return area_list;
+    }
+
+    public List<NatStatistics> getTodayNatnumOfArea(String city_code) {
+        List<NatStatistics> area_list=natResultMapper.getNatCitybyCode(city_code);
+        for(NatStatistics area:area_list){
+            NatStatistics temp=natResultMapper.getTodayNatnumOfArea(area);
+            area.setT_areanat(temp.getT_areanat());
+        }
+        Collections.sort(area_list);
+        return area_list;
     }
 }
