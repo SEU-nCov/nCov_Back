@@ -32,6 +32,9 @@ public class NatResultService {
     }
 
     public Integer natResultInput(NatResult natResult) {
+        if (!natResult.getNat_result().equals("阴性")) {
+            natResultMapper.setRedSignbyTube(natResult.getTube_id());
+        }
         return natResultMapper.natResultInput(natResult);
     }
 
@@ -69,5 +72,9 @@ public class NatResultService {
         }
         Collections.sort(area_list);
         return area_list;
+    }
+
+    public List<NatResult> getAllNatResult(String city_code) {
+        return natResultMapper.getAllNatResult(city_code);
     }
 }

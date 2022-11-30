@@ -149,4 +149,19 @@ public class NatResultController {
         }
         return r;
     }
+    @PostMapping("/admin/getAllNatResult")
+    public R getAllNatResult(@RequestBody Map<String,String> data){
+        R r=new R();
+        String city_code=data.get("city_code");
+        List<NatResult> results=natResultService.getAllNatResult(city_code);
+        if(results.size()!=0){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(results);
+        }else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
 }

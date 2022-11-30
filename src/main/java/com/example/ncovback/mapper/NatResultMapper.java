@@ -29,4 +29,8 @@ public interface NatResultMapper {
     List<NatStatistics> getNatCitybyCode(String city_code);
 
     NatStatistics getTodayNatnumOfArea(NatStatistics area);
+
+    void setRedSignbyTube(String tube_id);
+
+    List<NatResult> getAllNatResult(String city_code);
 }

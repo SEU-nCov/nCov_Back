@@ -14,6 +14,9 @@
     <update id="natResultInput" parameterType="com.example.ncovback.entity.NatResult">
         update tb_natres set nat_peopleid=#{nat_peopleid},nat_result=#{nat_result} where tube_id=#{tube_id}
     </update>
+    <update id="setRedSignbyTube" parameterType="java.lang.String">
+        update tb_user set user_signcolor=2,sign_timeleft=NOW() where user_id in (select user_id from tb_natres where tube_id=#{tube_id})
+    </update>
 
     <select id="getTenDayNatnumber" parameterType="java.lang.String" resultType="com.example.ncovback.entity.NatStatistics">
         select nat_time,count(*) as nat_number from tb_natres where date_sub(CURDATE(),INTERVAL 10 DAY) &lt;= DATE (nat_time)
@@ -42,5 +45,13 @@
                                                                                                       and tb_natpoint.area_code=tb_area.area_code
                                                                                                       and tb_natpoint.area_code=#{area_code}
                                                                                                         and DATE(nat_time)=CURDATE()
+    </select>
+
+    <select id="getAllNatResult" parameterType="java.lang.String" resultType="com.example.ncovback.entity.NatResult">
+        select tb_natres.*,tb_user.user_name,tb_natpoint.nat_pointname,tb_testpoint.tp_name
+        from tb_natres,tb_user,tb_natpoint,tb_testpoint where tb_natres.user_id=tb_user.user_id
+                                                                 and tb_natres.nat_pointid=tb_natpoint.nat_pointid
+                                                                and tb_natres.nat_peopleid=tb_testpoint.tp_id
+                                                                and tb_natpoint.city_code=#{city_code}
     </select>
 </mapper>
