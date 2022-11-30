@@ -34,7 +34,7 @@
     <select id="getVacCitybyCode" parameterType="java.lang.Integer" resultType="com.example.ncovback.entity.VaccinedCity">
         select area_code,area_name from tb_area where CONCAT(LEFT(area_code,4),'00')=#{city_code}
     </select>
-    <select id="getvaccineAreaRanking" parameterType="com.example.ncovback.entity.NatStatistics" resultType="com.example.ncovback.entity.NatStatistics">
+    <select id="getvaccineAreaRanking" parameterType="com.example.ncovback.entity.VaccinedCity" resultType="com.example.ncovback.entity.VaccinedCity">
         select tb_area.area_code,area_name,count(*) as vaccined_value from tb_vaccination,tb_vacpoint,tb_area where tb_vaccination.vac_pointid=tb_vacpoint.vac_pointid
                                                                                                                 and tb_vacpoint.area_code=tb_area.area_code
                                                                                                                 and tb_vacpoint.area_code=#{area_code}

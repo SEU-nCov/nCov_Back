@@ -23,7 +23,7 @@ public class MenuService {
         Menu nCov_test = new Menu("/nCov_test", "nCov_test", "核酸点信息", "notebook-1", "datamanage/nCov_test");
         Menu nCov_yimiao = new Menu("/nCov_vaccine_point", "nCov_vaccine_point", "疫苗点信息", "notebook-1", "datamanage/nCov_vaccine_point");
         Menu nCov_yimiao1 = new Menu("/nCov_vaccine_people", "nCov_vaccine_people", "疫苗接种信息", "notebook-1", "datamanage/nCov_vaccine_people");
-        Menu nCov_member = new Menu("/nCov_member", "nCov_member", "系统人员", "notebook-1", "datamanage/nCov_member");
+        Menu nCov_member = new Menu("/nCov_member", "nCov_member", "核酸检测机构", "notebook-1", "datamanage/nCov_member");
         Menu nCov_policy = new Menu("/nCov_policy", "nCov_policy", "防疫政策", "notebook-1", "datamanage/nCov_policy");
         child_data.add(nCov_data);
         child_data.add(nCov_test);
