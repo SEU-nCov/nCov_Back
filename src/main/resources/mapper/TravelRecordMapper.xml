@@ -11,4 +11,22 @@
         (select CONCAT(left(area_code,3),'000') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW())&lt; 168)
         and left(province_code,2)=left(city_code,2);
     </select>
+
+    <select id="getPosPeople" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select user_id from tb_natres where nat_result='阳性' and DATE(nat_time)=CURRENT_DATE and nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code})
+    </select>
+
+    <select id="getTravelRecordUser" parameterType="java.lang.Integer" resultType="com.example.ncovback.entity.TravelRecord">
+        select tb_user.user_id,tb_user.user_name,city_code,city_name,city_latitude,city_longitude from tb_city,tb_user where city_code in
+            (select CONCAT(left(area_code,4),'00') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW()) &lt; 168)
+            and tb_user.user_id=#{user_id}
+    </select>
+
+    <select id="getTodayConfirm" parameterType="java.lang.String" resultType="java.lang.String">
+        select count(*) as todayConfirm from tb_natres where nat_result='阳性' and DATE(nat_time)=CURRENT_DATE and nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code})
+    </select>
+
+    <select id="getTotalConfirm" parameterType="java.lang.String" resultType="java.lang.String">
+        select count(*) as totalConfirm  from tb_natres where nat_result='阳性'  and nat_pointid in (select nat_pointid from tb_natpoint where city_code=#{city_code})
+    </select>
 </mapper>
