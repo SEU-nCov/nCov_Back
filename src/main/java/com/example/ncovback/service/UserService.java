@@ -83,4 +83,8 @@ public class UserService {
     public Integer setGreenCode(Integer user_id) {
         return userMapper.setGreenCode(user_id);
     }
+
+    public User getselfHealthCode(Integer user_id) {
+        return userMapper.getselfHealthCode(user_id);
+    }
 }

@@ -42,4 +42,6 @@ public interface UserMapper {
     Integer setRedCode(Integer user_id);
 
     Integer setGreenCode(Integer user_id);
+
+    User getselfHealthCode(Integer user_id);
 }

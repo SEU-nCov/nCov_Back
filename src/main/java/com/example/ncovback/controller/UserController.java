@@ -219,4 +219,19 @@ public class UserController {
         }
         return r;
     }
+    @PostMapping("/getselfHealthCode")
+    public R getselfHealthCode(@RequestBody Map<String,Integer> data){
+        R r=new R();
+        Integer user_id=data.get("user_id");
+        User res=userService.getselfHealthCode(user_id);
+        if(res!=null){
+            r.setCode(200);
+            r.setMsg("获取成功");
+            r.setData(res);
+        }else {
+            r.setCode(201);
+            r.setMsg("error");
+        }
+        return r;
+    }
 }

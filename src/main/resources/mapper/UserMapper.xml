@@ -61,4 +61,7 @@
     <update id="setGreenCode" parameterType="java.lang.Integer">
         update tb_user set user_signcolor=0,sign_timeleft=NOW() where user_id=#{user_id}
     </update>
+    <select id="getselfHealthCode" parameterType="java.lang.Integer" resultType="com.example.ncovback.entity.User">
+        select * from tb_user where user_id=#{user_id};
+    </select>
 </mapper>

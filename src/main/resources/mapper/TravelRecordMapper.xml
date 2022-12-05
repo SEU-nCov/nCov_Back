@@ -8,7 +8,7 @@
     <select id="getTravelRecordbyuid" parameterType="com.example.ncovback.entity.TravelRecord" resultType="java.lang.String">
         select CONCAT(province_name,city_name) from tb_province,tb_city where city_code in
         (select CONCAT(left(area_code,4),'00') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW()) &lt; 168) and province_code in
-        (select CONCAT(left(area_code,3),'000') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW())&lt; 168)
+        (select CONCAT(left(area_code,2),'0000') from tb_travel where user_id=#{user_id} and TIMESTAMPDIFF(HOUR ,t_time,NOW())&lt; 168)
         and left(province_code,2)=left(city_code,2);
     </select>
 
